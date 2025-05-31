@@ -61,9 +61,9 @@ public class ConnectivitySettingsUtils {
 
     private static int getPrivateDnsModeAsInt(String mode) {
         // If both PRIVATE_DNS_MODE and PRIVATE_DNS_DEFAULT_MODE are not set, choose
-        // PRIVATE_DNS_MODE_OPPORTUNISTIC as default mode.
+        // PRIVATE_DNS_MODE_OFF as default mode.
         if (TextUtils.isEmpty(mode))
-            return PRIVATE_DNS_MODE_OPPORTUNISTIC;
+            return PRIVATE_DNS_MODE_OFF;
         switch (mode) {
             case "off":
                 return PRIVATE_DNS_MODE_OFF;
@@ -75,7 +75,7 @@ public class ConnectivitySettingsUtils {
                 // b/260211513: adb shell settings put global private_dns_mode foo
                 // can result in arbitrary strings - treat any unknown value as empty string.
                 // throw new IllegalArgumentException("Invalid private dns mode: " + mode);
-                return PRIVATE_DNS_MODE_OPPORTUNISTIC;
+                return PRIVATE_DNS_MODE_OFF;
         }
     }
 
